@@ -17,8 +17,13 @@ export function Header() {
     setIsMenuOpen((prev) => !prev);
   };
 
-  const getLinkClass = (isActive: boolean) =>
-    isActive ? "text-gray-900 underline underline-offset-4" : "text-gray-600 hover:text-gray-900";
+  const getLinkClass = (isActive: boolean) => {
+    if(isActive){
+      return "text-gray-900 underline underline-offset-4"
+    }else{
+      return "text-gray-600 hover:text-gray-900";
+    }
+  }
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
