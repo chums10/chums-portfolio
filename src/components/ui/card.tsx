@@ -1,8 +1,19 @@
 import React from "react";
 import { cn } from "@/lib/cn";
 
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
+// Types
+export type CardProps = React.HTMLAttributes<HTMLDivElement>;
+export type CardHeaderProps = React.HTMLAttributes<HTMLDivElement>;
+export type CardDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>;
+export type CardContentProps = React.HTMLAttributes<HTMLDivElement>;
+export type CardFooterProps = React.HTMLAttributes<HTMLDivElement>;
+export type CardTitleProps = React.HTMLAttributes<HTMLHeadingElement> & {
+  icon?: React.ReactNode;
+  imageSrc?: string;
+  imageFullWidth?: boolean;
+}
 
+// Component Functions Parts for Card
 export function Card({ className, ...props }: CardProps) {
   return (
     <div
@@ -15,16 +26,9 @@ export function Card({ className, ...props }: CardProps) {
   );
 }
 
-export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function CardHeader({ className, ...props }: CardHeaderProps) {
   return <div className={cn("space-y-4", className)} {...props} />;
-}
-
-export interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  icon?: React.ReactNode;
-  imageSrc?: string;
-  imageFullWidth?: boolean;
 }
 
 export function CardTitle({ className, icon, imageSrc, imageFullWidth = false, children, ...props }: CardTitleProps) {
@@ -62,8 +66,6 @@ export function CardTitle({ className, icon, imageSrc, imageFullWidth = false, c
   );
 }
 
-export interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
-
 export function CardDescription({ className, ...props }: CardDescriptionProps) {
   return (
     <p
@@ -73,13 +75,10 @@ export function CardDescription({ className, ...props }: CardDescriptionProps) {
   );
 }
 
-export interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function CardContent({ className, ...props }: CardContentProps) {
   return <div className={cn("py-2", className)} {...props} />;
 }
-
-export interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function CardFooter({ className, ...props }: CardFooterProps) {
   return <div className={cn("pt-6 mt-auto", className)} {...props} />;

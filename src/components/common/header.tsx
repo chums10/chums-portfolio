@@ -17,10 +17,6 @@ export function Header() {
     setIsMenuOpen((prev) => !prev);
   };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
   const getLinkClass = (isActive: boolean) =>
     isActive ? "text-gray-900 underline underline-offset-4" : "text-gray-600 hover:text-gray-900";
 
@@ -32,14 +28,14 @@ export function Header() {
           "fixed inset-0 bg-black/40 transition-opacity duration-300 md:hidden z-40",
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
-        onClick={closeMenu}
+        onClick={toggleMenu}
       />
 
       <Section className="py-0" containerClassName="relative z-50 bg-white">
         <div className="flex items-center justify-between h-16">
           {/* Logo / Brand */}
           <div className="flex-shrink-0">
-            <NavLink to="/" className="text-xl font-bold text-gray-900" onClick={closeMenu}>
+            <NavLink to="/" className="text-xl font-bold text-gray-900" onClick={toggleMenu}>
               MyFirstApp
             </NavLink>
           </div>
@@ -94,13 +90,13 @@ export function Header() {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) => cn("text-sm font-medium py-2 transition-colors", getLinkClass(isActive))}
-                onClick={closeMenu}
+                onClick={toggleMenu}
               >
                 {item.label}
               </NavLink>
             ))}
             <div className="pt-2 border-t border-gray-100">
-              <NavLink to="/contact" onClick={closeMenu} className="inline-block w-full">
+              <NavLink to="/contact" onClick={toggleMenu} className="inline-block w-full">
                 <Button className="w-full">Contact</Button>
               </NavLink>
             </div>
